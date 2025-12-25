@@ -21,7 +21,7 @@ const Create = () => {
     recipe.id = nanoid();
     setdata([...data, recipe]);
     reset();
-    toast.success("Recipe is created!")
+    toast.success("Recipe successfully created!")
     navigate("/recipes");
   }
 
