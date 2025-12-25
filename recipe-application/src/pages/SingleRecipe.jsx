@@ -1,0 +1,106 @@
+import React, { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { recipecontext } from "../context/RecipeContext";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+
+const SingleRecipe = () => {
+  const navigate = useNavigate();
+  const params = useParams();
+  const [data, setdata] = useContext(recipecontext);
+  const recipe = data.find((r) => r.id == params.id);
+  const index = data.findIndex((r) => r.id == params.id);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      image: recipe.image,
+      title: recipe.title,
+      desc: recipe.desc,
+      inst: recipe.inst,
+      ingr: recipe.ingr,
+      cate: recipe.cate,
+    },
+  });
+
+  const SubmitHandler = (newdata) => {
+    const copydata = data;
+    copydata[index] = {...recipe, ...newdata};
+    setdata(copydata);
+    toast.success("Recipe updated!");
+  }
+  const DeleteHandler = () => {
+    const newdata = data.filter(r => r.id != recipe.id);
+    setdata(newdata);
+    navigate('/recipes');
+    toast.success("Recipe deleted!")
+  }
+
+  return (
+    <div className=" w-full px-6 py-2 flex gap-1">
+      <div className="w-1/2 px-10 py-1 border-r flex flex-col gap-4">
+        <h1 className="text-center text-3xl font-bold">{recipe.title}</h1>
+        <img
+          className="w-[100%] h-80 object-cover rounded"
+          src={recipe.image}
+          alt=""
+        />
+        <p className="text-xl">{recipe.desc? recipe.desc : ""}</p>
+        <p className="text-xl">{recipe.ingr? recipe.ingr : ""}</p>
+        <p className="text-xl">{recipe.inst? recipe.inst : ""}</p>
+        <h2 className="text-xl font-bold">Category : {recipe.cate}</h2>
+      </div>
+      <form onSubmit={handleSubmit(SubmitHandler)} className=" w-1/2 px-10 py-3 border-l flex flex-col gap-6">
+        <input
+          {...register("image")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          type="url"
+          placeholder="Enter image URL"
+        />
+        <input
+          {...register("title")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          type="text"
+          placeholder="Enter recipe title"
+        />
+        <textarea
+          {...register("desc")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          placeholder="Enter the description"
+        ></textarea>
+        <textarea
+          {...register("inst")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          placeholder="Enter the instruction"
+        ></textarea>
+        <textarea
+          {...register("ingr")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          placeholder="Enter the ingredience"
+        ></textarea>
+        <select
+          {...register("cate")}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+        >
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+        <div className="w-full flex gap-4">
+          <button className="w-1/2 px-3 py-2 bg-amber-400 text-gray-900 transition duration-150 ease-in-out active:scale-97 rounded text-2xl font-bold">
+            Update Recipe
+          </button>
+          <button onClick={DeleteHandler} className="w-1/2 px-3 py-2 bg-red-800 text-amber-200 transition duration-150 ease-in-out active:scale-97 rounded text-2xl font-bold">
+            Delete Recipe
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default SingleRecipe;
