@@ -6,7 +6,6 @@ const Home = () => {
   const getproduct = async() => {
     try {
       const response = await axios.get("/products");
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -14,12 +13,12 @@ const Home = () => {
 
   useEffect(()=>{
     getproduct();
-  },[])
+  },[]);
 
   return (
-    <div>
-      <h1>Home</h1>
-      <button onClick={getproduct}>click</button>
+    <div className='text-center'>
+      <h1 className='text-5xl mb-9'>Home</h1>
+      <button onClick={getproduct} className='text-3xl px-4 py-1 bg-red-400 text-white rounded'>Get Product Data</button>
     </div>
   )
 }
