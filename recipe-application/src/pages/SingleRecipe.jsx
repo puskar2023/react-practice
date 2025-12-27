@@ -43,8 +43,8 @@ const SingleRecipe = () => {
   }
 
   return (
-    <div className=" w-full px-6 py-2 flex gap-1">
-      <div className="w-1/2 px-10 py-1 border-r flex flex-col gap-4">
+    <div className=" w-full px-1 py-2 flex flex-col gap-1 lg:flex-row lg:px-6">
+      <div className="w-[100%] px-2 py-1 flex flex-col gap-4 lg:w-1/2 lg:px-10 lg:border-r">
         <h1 className="text-center text-3xl font-bold">{recipe.title}</h1>
         <img
           className="w-[100%] h-80 object-cover rounded"
@@ -56,7 +56,7 @@ const SingleRecipe = () => {
         <p className="text-xl">{recipe.inst? recipe.inst : ""}</p>
         <h2 className="text-xl font-bold">Category : {recipe.cate}</h2>
       </div>
-      <form onSubmit={handleSubmit(SubmitHandler)} className=" w-1/2 px-10 py-3 border-l flex flex-col gap-6">
+      <form onSubmit={handleSubmit(SubmitHandler)} className=" w-[100%] px-3 py-3 flex flex-col gap-6 lg:w-1/2 lg:border-l lg:px-10">
         <input
           {...register("image")}
           className="bg-gray-900 px-3 py-2 outline-0 border rounded"
