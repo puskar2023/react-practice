@@ -31,6 +31,7 @@ const SingleRecipe = () => {
     const copydata = data;
     copydata[index] = {...recipe, ...newdata};
     setdata(copydata);
+    localStorage.setItem("recipes", JSON.stringify(copydata));
     toast.success("Recipe updated!");
   }
   const DeleteHandler = () => {
