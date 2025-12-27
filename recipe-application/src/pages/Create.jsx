@@ -28,39 +28,43 @@ const Create = () => {
   }
 
   return (
-    <div className="w-full px-20 flex justify-center items-center">
+    <div className="w-full px-3 flex justify-center items-center lg:px-20">
       <form
-      onSubmit={handleSubmit(SubmitHandler)} className=" w-[60%] flex flex-col gap-7 text-xl">
+      onSubmit={handleSubmit(SubmitHandler)} className=" w-[100%] flex flex-col text-xl pb-3 lg:w-[50%]">
         <input
-          {...register("image")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          {...register("image", {required : 'enter the image url'})}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-2"
           type="url"
           placeholder="Enter image URL"
         />
+        <small className="mb-5">{errors?.image?.message}</small>
         <input
-          {...register("title")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          {...register("title", {required : 'enter the title of the recipe'})}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-2"
           type="text"
           placeholder="Enter recipe title"
         />
+        <small className="mb-5">{errors?.title?.message}</small>
         <textarea
-          {...register("desc")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          {...register("desc", {required : 'enter the description'})}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-2"
           placeholder="Enter the description"
         ></textarea>
+        <small className="mb-5">{errors?.desc?.message}</small>
         <textarea
-          {...register("inst")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          {...register("inst", {required : 'enter the instruction'})}
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-2"
           placeholder="Enter the instruction"
         ></textarea>
+        <small className="mb-5">{errors?.inst?.message}</small>
         <textarea
           {...register("ingr")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-7"
           placeholder="Enter the ingredience"
         ></textarea>
         <select
           {...register("cate")}
-          className="bg-gray-900 px-3 py-2 outline-0 border rounded"
+          className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-7"
         >
           <option value="breakfast">Breakfast</option>
           <option value="lunch">Lunch</option>
