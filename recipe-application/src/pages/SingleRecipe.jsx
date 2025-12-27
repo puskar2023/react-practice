@@ -43,7 +43,7 @@ const SingleRecipe = () => {
   }
 
   return (
-    <div className=" w-full px-1 py-2 flex flex-col gap-1 lg:flex-row lg:px-6">
+    <div className=" w-full px-1 py-2 flex flex-col gap-15 lg:flex-row lg:px-6 lg:gap-1">
       <div className="w-[100%] px-2 py-1 flex flex-col gap-4 lg:w-1/2 lg:px-10 lg:border-r">
         <h1 className="text-center text-3xl font-bold">{recipe.title}</h1>
         <img
@@ -56,6 +56,7 @@ const SingleRecipe = () => {
         <p className="text-xl">{recipe.inst? recipe.inst : ""}</p>
         <h2 className="text-xl font-bold">Category : {recipe.cate}</h2>
       </div>
+      <div className="h-[1px] w-full bg-white lg:hidden"></div>
       <form onSubmit={handleSubmit(SubmitHandler)} className=" w-[100%] px-3 py-3 flex flex-col gap-6 lg:w-1/2 lg:border-l lg:px-10">
         <input
           {...register("image")}
@@ -93,10 +94,10 @@ const SingleRecipe = () => {
           <option value="dinner">Dinner</option>
         </select>
         <div className="w-full flex gap-4">
-          <button className="w-1/2 px-3 py-2 bg-amber-400 text-gray-900 transition duration-150 ease-in-out active:scale-97 rounded text-2xl font-bold">
+          <button className="w-1/2 px-3 py-2 bg-amber-400 text-gray-900 transition duration-150 ease-in-out active:scale-97 rounded text-xl font-bold lg:text-2xl">
             Update Recipe
           </button>
-          <button onClick={DeleteHandler} className="w-1/2 px-3 py-2 bg-red-800 text-amber-200 transition duration-150 ease-in-out active:scale-97 rounded text-2xl font-bold">
+          <button onClick={DeleteHandler} className="w-1/2 px-3 py-2 bg-red-800 text-amber-200 transition duration-150 ease-in-out active:scale-97 rounded text-xl font-bold lg:text-2xl">
             Delete Recipe
           </button>
         </div>
