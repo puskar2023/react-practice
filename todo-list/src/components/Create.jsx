@@ -26,7 +26,7 @@ const Create = () => {
 
   return (
     <form onSubmit={handleSubmit(SubmitHandler)} className="w-[100%] h-[50%] px-6 border flex flex-col gap-1 lg:w-[65%] h-[90%] lg:px-15 py-10 lg:gap-10">
-      <h1 className="text-6xl">Register <span className="text-red-400">Pending</span> Tasks</h1>
+      <h1 className="text-4xl md:text-6xl">Register <span className="text-red-400">Pending</span> Tasks</h1>
       <input
       {...register("title",{required: "Title can not be empty"})}
         type="text"
@@ -34,8 +34,8 @@ const Create = () => {
         className="p-3 text-2xl border-b outline-0"
       />
       <small>{errors?.title?.message}</small>
-      <button className="p-2 w-[fit-content] text-xl rounded border bg-white text-gray-800">
-        Add tasks
+      <button className="px-3 py-2 w-[fit-content]  text-xl rounded border bg-white text-gray-800 md:text-2xl">
+        Add task
       </button>
     </form>
   );
