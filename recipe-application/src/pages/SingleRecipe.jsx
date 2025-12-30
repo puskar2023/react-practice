@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { recipecontext } from "../context/RecipeContext";
 import { useForm } from "react-hook-form";
@@ -29,57 +29,80 @@ const SingleRecipe = () => {
 
   const SubmitHandler = (newdata) => {
     const copydata = data;
-    copydata[index] = {...recipe, ...newdata};
+    copydata[index] = { ...recipe, ...newdata };
     setdata(copydata);
     localStorage.setItem("recipes", JSON.stringify(copydata));
     toast.success("Recipe updated!");
-  }
+  };
   const DeleteHandler = () => {
-    const newdata = data.filter(r => r.id != recipe.id);
+    const newdata = data.filter((r) => r.id != recipe.id);
     setdata(newdata);
     localStorage.setItem("recipes", JSON.stringify(newdata));
-    navigate('/recipes');
-    toast.success("Recipe deleted!")
+    UnFavHandler();
+    navigate("/recipes");
+    toast.success("Recipe deleted!");
+  };
+  const [favourite, setfavourite] = useState(JSON.parse(localStorage.getItem("fav")) || []);
+  useEffect(()=>{
+
+  },[])
+  const UnFavHandler = () => {
+    const newfav = favourite.filter(f => f.id != recipe.id);
+    setfavourite(newfav);
+    localStorage.setItem("fav",JSON.stringify(newfav));
+  }
+  const FavHandler = () => {
+    const copyfav = [...favourite, recipe];
+    setfavourite(copyfav);
+    localStorage.setItem("fav",JSON.stringify(copyfav))
   }
 
   return (
     <div className=" w-full px-1 py-2 flex flex-col gap-15 lg:flex-row lg:px-6 lg:gap-1">
-      <div className="w-[100%] px-2 py-1 flex flex-col gap-4 lg:w-1/2 lg:px-10 lg:border-r">
+      <div className="relative w-[100%] px-2 py-1 flex flex-col gap-4 lg:w-1/2 lg:px-10 lg:border-r">
+        {favourite.find((f) => f.id == recipe.id) ? (
+          <i onClick={UnFavHandler} className="absolute top-[0%] right-[6%] text-3xl text-red-600 ri-poker-hearts-fill"></i>
+        ) : (
+          <i onClick={FavHandler} className="absolute top-[0%] right-[6%] text-3xl ri-poker-hearts-line"></i>
+        )}
         <h1 className="text-center text-3xl font-bold">{recipe.title}</h1>
         <img
           className="w-[100%] h-80 object-cover rounded"
           src={recipe.image}
           alt=""
         />
-        <p className="text-xl">{recipe.desc? recipe.desc : ""}</p>
-        <p className="text-xl">{recipe.ingr? recipe.ingr : ""}</p>
-        <p className="text-xl">{recipe.inst? recipe.inst : ""}</p>
+        <p className="text-xl">{recipe.desc ? recipe.desc : ""}</p>
+        <p className="text-xl">{recipe.ingr ? recipe.ingr : ""}</p>
+        <p className="text-xl">{recipe.inst ? recipe.inst : ""}</p>
         <h2 className="text-xl font-bold">Category : {recipe.cate}</h2>
       </div>
       <div className="h-[1px] w-full bg-white lg:hidden"></div>
-      <form onSubmit={handleSubmit(SubmitHandler)} className=" w-[100%] px-3 py-3 flex flex-col lg:w-1/2 lg:border-l lg:px-10">
+      <form
+        onSubmit={handleSubmit(SubmitHandler)}
+        className=" w-[100%] px-3 py-3 flex flex-col lg:w-1/2 lg:border-l lg:px-10"
+      >
         <input
-          {...register("image", {required : 'enter the image url'})}
+          {...register("image", { required: "enter the image url" })}
           className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-1"
           type="url"
           placeholder="Enter image URL"
         />
         <small className="mb-5">{errors?.image?.message}</small>
         <input
-          {...register("title", {required : 'enter the title of the recipe'})}
+          {...register("title", { required: "enter the title of the recipe" })}
           className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-1"
           type="text"
           placeholder="Enter recipe title"
         />
         <small className="mb-5">{errors?.title?.message}</small>
         <textarea
-          {...register("desc", {required : 'enter the description'})}
+          {...register("desc", { required: "enter the description" })}
           className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-1"
           placeholder="Enter the description"
         ></textarea>
         <small className="mb-5">{errors?.desc?.message}</small>
         <textarea
-          {...register("inst", {required : 'enter the instruction'})}
+          {...register("inst", { required: "enter the instruction" })}
           className="bg-gray-900 px-3 py-2 outline-0 border rounded mb-1"
           placeholder="Enter the instruction"
         ></textarea>
@@ -101,7 +124,10 @@ const SingleRecipe = () => {
           <button className="w-1/2 px-3 py-2 bg-amber-400 text-gray-900 transition duration-150 ease-in-out active:scale-97 rounded text-xl font-bold lg:text-2xl">
             Update Recipe
           </button>
-          <button onClick={DeleteHandler} className="w-1/2 px-3 py-2 bg-red-800 text-amber-200 transition duration-150 ease-in-out active:scale-97 rounded text-xl font-bold lg:text-2xl">
+          <button
+            onClick={DeleteHandler}
+            className="w-1/2 px-3 py-2 bg-red-800 text-amber-200 transition duration-150 ease-in-out active:scale-97 rounded text-xl font-bold lg:text-2xl"
+          >
             Delete Recipe
           </button>
         </div>
