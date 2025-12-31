@@ -28,7 +28,7 @@ const Create = () => {
   }
 
   return (
-    <div className="w-full px-3 flex justify-center items-center lg:px-20">
+    <div className="w-full pt-30 px-6 pb-3 flex justify-center items-center lg:px-20">
       <form
       onSubmit={handleSubmit(SubmitHandler)} className=" w-[100%] flex flex-col text-xl pb-3 lg:w-[50%]">
         <input

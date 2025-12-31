@@ -58,7 +58,7 @@ const SingleRecipe = () => {
   }
 
   return (
-    <div className=" w-full px-1 py-2 flex flex-col gap-15 lg:flex-row lg:px-6 lg:gap-1">
+    <div className=" w-full pt-25 px-5 pb-3 flex flex-col gap-15 lg:flex-row lg:px-6 lg:gap-1">
       <div className="relative w-[100%] px-2 py-1 flex flex-col gap-4 lg:w-1/2 lg:px-10 lg:border-r">
         {favourite.find((f) => f.id == recipe.id) ? (
           <i onClick={UnFavHandler} className="absolute top-[0%] right-[6%] text-3xl text-red-600 ri-poker-hearts-fill"></i>

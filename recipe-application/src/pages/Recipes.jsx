@@ -9,7 +9,7 @@ const Recipes = () => {
     return <RecipeCard key={recipe.id} recipe={recipe} />
   })
   return (
-    <div className="w-[100%] px-2 grid grid-cols-1 gap-7 py-2 lg:px-19 lg:grid-cols-3">
+    <div className="w-[100%] pt-25 px-5 pb-3 grid grid-cols-1 gap-7 lg:px-19 lg:grid-cols-3">
       {renderrecipes}
     </div>
   )

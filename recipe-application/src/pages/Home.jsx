@@ -10,7 +10,7 @@ const Home = () => {
   },[]);
 
   return (
-    <div className='text-center'>
+    <div className='text-center pt-25 pb-3'>
       <h1 className='text-5xl mb-9'>Home</h1>
     </div>
   )
