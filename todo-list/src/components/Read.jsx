@@ -21,7 +21,7 @@ const Read = () => {
     })
   return (
     <div className='w-[100%] h-[50%] overflow-auto px-6 py-3 border flex flex-col gap-1 lg:w-[45%] h-[90%] lg:px-15 py-10 lg:gap-10'>
-        <h1 className='text-4xl'>All Pending Tasks</h1>
+        <h1 className='text-4xl'>All <span className='text-red-400'>Pending</span> Tasks</h1>
         <ol className='flex flex-col gap-2 mt-10 lg:mt-1 '>{rendertasks}</ol>
     </div>
   )

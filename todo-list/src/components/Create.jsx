@@ -34,7 +34,7 @@ const Create = () => {
         className="p-3 text-2xl border-b outline-0"
       />
       <small>{errors?.title?.message}</small>
-      <button className="px-3 py-2 w-[fit-content]  text-xl rounded border bg-white text-gray-800 md:text-2xl">
+      <button className="px-3 py-2 w-[fit-content] text-xl rounded border bg-white text-gray-800 md:text-2xl">
         Add task
       </button>
     </form>
