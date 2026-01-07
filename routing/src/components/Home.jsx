@@ -3,7 +3,8 @@ import Nav from './Nav'
 
 const Home = () => {
   return (
-    <div>Home
+    <div className='h-screen bg-gray-400'>
+      Home
     </div>
   )
 }

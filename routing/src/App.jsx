@@ -1,13 +1,20 @@
 import React from 'react'
 import Nav from './components/Nav'
 import Mainroutes from './routes/Mainroutes'
+import Home from './components/Home'
+import Products from './components/Products'
+import Service from './components/Service'
+import About from './components/About'
 
 
 const App = () => {
   return (
-    <div className='h-screen w-screen bg-gray-800 text-white py-5 px-30'>
+    <div className='min-h-screen w-full bg-black'>
       <Nav />
-      <Mainroutes />
+      <Home />
+      <Products />
+      <Service />
+      <About />
     </div>
   )
 }
