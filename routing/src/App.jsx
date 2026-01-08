@@ -13,7 +13,9 @@ const App = () => {
         </div>
       </div>
       <div className="container"></div>
-      <div className="input"></div>
+      <div className=" w-[70%] bg-gray-600/60">
+        <input type="text" placeholder='Ask anything'/>
+      </div>
       </div>
     </div>
   )
