@@ -1,11 +1,11 @@
 import React from 'react'
-import { UserPlus, MessageCircleDashed } from 'lucide-react';
+import { UserPlus, MessageCircleDashed, ArrowUp } from 'lucide-react';
 const App = () => {
   return (
     <div className='h-screen w-full flex'>
       <div className='left-bar h-screen w-[20%] bg-black'></div>
-      <div className='right-bar h-screen w-[80%] bg-black/86'>
-      <div className="nav h-15 flex items-center justify-between px-6 bg-gradient-to-r from-[#z4D2B8C] to-[#85409D]">
+      <div className='relative flex flex-col items-center right-bar h-screen w-[80%] bg-black/86'>
+      <div className="nav w-full h-15 flex items-center justify-between px-6 bg-gradient-to-r from-[#z4D2B8C] to-[#85409D]">
         <h1 className='text-2xl text-white/80'>ChatGPT</h1>
         <div className='flex items-center gap-10 text-white px-7'>
           <UserPlus className='text-xl' />
@@ -13,8 +13,9 @@ const App = () => {
         </div>
       </div>
       <div className="container"></div>
-      <div className=" w-[70%] bg-gray-600/60">
-        <input type="text" placeholder='Ask anything'/>
+      <div className="absolute bottom-10 h-16 rounded-full w-[70%] bg-black/90 flex items-center justify-between px-3">
+        <input className='text-white w-[90%] overflow-auto ml-4 p-2' type="text" placeholder='Ask anything'/>
+        <ArrowUp className='bg-white h-10 w-10 rounded-full'/>
       </div>
       </div>
     </div>
