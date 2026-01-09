@@ -13,8 +13,8 @@ const App = () => {
         </div>
       </div>
       <div className="container"></div>
-      <div className="absolute bottom-10 h-16 rounded-full w-[70%] bg-black/90 flex items-center justify-between px-3">
-        <input className='text-white w-[90%] overflow-auto ml-4 p-2' type="text" placeholder='Ask anything'/>
+      <div className="absolute border border-gray-600/90 bottom-10 h-16 rounded-full w-[70%] bg-black/90 flex items-center justify-between px-3">
+        <input className='text-white outline-0 w-[90%] overflow-auto ml-4 p-2' type="text" placeholder='Ask anything'/>
         <ArrowUp className='bg-white h-10 w-10 rounded-full'/>
       </div>
       </div>
